@@ -14,6 +14,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { ProcesosComponent } from './components/procesos/procesos.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { EmpresasComponent } from './components/empresas/empresas.component';
+import { IndicadoresComponent } from './components/indicadores/indicadores.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     NavbarComponent,
     UsuariosComponent,
     NotfoundComponent,
-    SidebarComponent
+    SidebarComponent,
+    ProcesosComponent,
+    RolesComponent,
+    EmpresasComponent,
+    IndicadoresComponent
   ],
   imports: [
     BrowserModule,

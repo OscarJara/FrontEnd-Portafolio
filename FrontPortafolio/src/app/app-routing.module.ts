@@ -6,12 +6,14 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
+import { ProcesosComponent } from './components/procesos/procesos.component';
 
 
 const routes: Routes = [
   { path: 'recovery', component: RecoveryPasswordComponent },
   { path: 'login'   , component: LoginComponent },
   { path: 'home'    , component: HomeComponent,canActivate: [AuthGuard] },
+  { path: 'procesos'    , component: ProcesosComponent,canActivate: [AuthGuard] },
   { path: 'usuarios'    , component: UsuariosComponent,canActivate: [AuthGuard] },
   { path: '404'    , component: NotfoundComponent,canActivate: [AuthGuard] },
   { path: '**', redirectTo: '404' , canActivate: [AuthGuard]}
