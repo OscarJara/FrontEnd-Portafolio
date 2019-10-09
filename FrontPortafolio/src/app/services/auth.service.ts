@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginModel } from '../models/login.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,24 @@ export class AuthService {
     return this.http.post(`${this.URL_API}/login`,payload);
 
   }
+  ResetPassword(contrasena:string,token:string){
+    const headers = new HttpHeaders()
+          .set("Access-Token", token);
 
+    const params = {
+      password:contrasena
+    };
+
+    return this.http.post(`${this.URL_API}/new-password`,params,{headers});
+  }
+
+  ValidToken(token:string){
+    const headers = new HttpHeaders()
+            .set("Access-Token", token);
+
+    return this.http.get(`${this.URL_API}/vd-tkn`,{headers});
+
+  }
   DeleteUser(id_usuario:string){
     const params = {
       id:id_usuario

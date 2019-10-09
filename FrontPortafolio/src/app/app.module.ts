@@ -14,6 +14,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { NewPasswordComponent } from './components/new-password/new-password.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     NavbarComponent,
     UsuariosComponent,
     NotfoundComponent,
-    SidebarComponent
+    SidebarComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,
