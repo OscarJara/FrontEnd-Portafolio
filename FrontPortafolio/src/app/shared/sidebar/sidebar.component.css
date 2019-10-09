@@ -608,3 +608,11 @@ html.rtl .sidebar-hide .sidebar.sidebar-shrink.sidebar-hide-to-small~.content-wr
     -webkit-transform: translateY(-3px) rotate(-45deg);
     transform: translateY(-3px) rotate(-45deg);
 }
+
+
+.sidebar-sub-toggle>.nav-link>p{
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    color: #fff;
+}
