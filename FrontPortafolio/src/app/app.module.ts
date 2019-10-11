@@ -35,11 +35,8 @@ import { NewPasswordComponent } from './components/new-password/new-password.com
     RolesComponent,
     EmpresasComponent,
     IndicadoresComponent,
-<<<<<<< HEAD
-    TarjetaProcesoComponent
-=======
+    TarjetaProcesoComponent,
     NewPasswordComponent
->>>>>>> e1a07b10443c79d08a550c54df51fe4816a53c78
   ],
   imports: [
     BrowserModule,
