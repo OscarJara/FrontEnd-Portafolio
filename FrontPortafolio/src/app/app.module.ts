@@ -18,6 +18,7 @@ import { ProcesosComponent } from './components/procesos/procesos.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { IndicadoresComponent } from './components/indicadores/indicadores.component';
+import { TarjetaProcesoComponent } from './components/tarjeta-proceso/tarjeta-proceso.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { IndicadoresComponent } from './components/indicadores/indicadores.compo
     ProcesosComponent,
     RolesComponent,
     EmpresasComponent,
-    IndicadoresComponent
+    IndicadoresComponent,
+    TarjetaProcesoComponent
   ],
   imports: [
     BrowserModule,

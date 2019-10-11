@@ -1,28 +1,21 @@
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
-<div class="flot-container">
-  <!--TODO: Generar "tarjetas" con distintos procesos asociados al usuario-->
-  <div class="main">
-    <div class="container-fluid">
-      <div class="card columns">
-        <div class="row">
-          <div class="card border-success mb-3">
-            <div class="card-header">Titulo</div>
-            <div class="card-body text-success">
-              <h5 class="card-title">Noticias Exito - Propias / General</h5>
-              <p class="card-text">Información</p>
-            </div>
-          </div>
-          <div class="card border-success mb-3">
-            <div class="card-header">Titulo</div>
-            <div class="card-body text-success">
-              <h5 class="card-title">Noticias Exito - Propias / General</h5>
-              <p class="card-text">Información</p>
-            </div>
-          </div>
-        </div>
 
+<div class="flot-container">
+<div class="main">
+  
+      <div class="row">
+        <div class="col-sm-4">
+            <app-tarjeta-proceso></app-tarjeta-proceso>
+                      
+        </div>
+        <div class="col-sm-4">
+            <app-tarjeta-proceso></app-tarjeta-proceso>
+        </div>
+        
+        <div class="col-sm-4">
+            <app-tarjeta-proceso></app-tarjeta-proceso>
+        </div>
       </div>
     </div>
-  </div>
 </div>
