@@ -18,6 +18,7 @@ import { ProcesosComponent } from './components/procesos/procesos.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { IndicadoresComponent } from './components/indicadores/indicadores.component';
+import { TarjetaProcesoComponent } from './components/tarjeta-proceso/tarjeta-proceso.component';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
 import { ModalsComponent } from './components/modals/modals.component';
 
@@ -35,6 +36,7 @@ import { ModalsComponent } from './components/modals/modals.component';
     RolesComponent,
     EmpresasComponent,
     IndicadoresComponent,
+    TarjetaProcesoComponent,
     NewPasswordComponent,
     ModalsComponent
   ],
