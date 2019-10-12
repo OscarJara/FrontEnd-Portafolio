@@ -51,15 +51,22 @@ export class AuthService {
     return this.http.get(`${this.URL_API}/vd-tkn`,{headers});
 
   }
+  RecoveryPassword(email:string){
+    const params = {
+      email:email
+    };
+
+    return this.http.post(`${this.URL_API}/recovery-password`,params);
+  }
   DeleteUser(id_usuario:string){
     const params = {
       id:id_usuario
     };
 
-    return this.http.post(`${this.URL_API}/delete-user`,params);;
+    return this.http.post(`${this.URL_API}/delete-user`,params);
   }
-  GetUsers(){
-    return this.http.get(`${this.URL_API}/user`);
+  GetUsers(empresa:string,id:string){
+    return this.http.get(`${this.URL_API}/user?id=${id}&e=${empresa}`);
   }
   Logout(){
     console.log('REMOVE');

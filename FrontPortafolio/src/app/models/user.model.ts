@@ -3,6 +3,4 @@ export class UserModel{
     nombre:string;
     appaterno:string;
     apmaterno:string;
-    foto:any;
-    id:number;
 }

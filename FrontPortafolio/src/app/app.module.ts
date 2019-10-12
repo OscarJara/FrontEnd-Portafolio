@@ -19,6 +19,7 @@ import { RolesComponent } from './components/roles/roles.component';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { IndicadoresComponent } from './components/indicadores/indicadores.component';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
+import { ModalsComponent } from './components/modals/modals.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NewPasswordComponent } from './components/new-password/new-password.com
     RolesComponent,
     EmpresasComponent,
     IndicadoresComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    ModalsComponent
   ],
   imports: [
     BrowserModule,

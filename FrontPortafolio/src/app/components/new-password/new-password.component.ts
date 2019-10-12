@@ -80,6 +80,7 @@ export class NewPasswordComponent implements OnInit {
               type:'success',
               text:resp['msg']
             })
+            this.router.navigateByUrl('/login');
           }else{
             Swal.fire({
               allowOutsideClick:false,
