@@ -3,4 +3,5 @@ export class UserModel{
     nombre:string;
     appaterno:string;
     apmaterno:string;
+    id:number;
 }
