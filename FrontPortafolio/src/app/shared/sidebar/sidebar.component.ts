@@ -30,6 +30,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     //TODO: Modificar onInit para llamada a servicio encargado de traer listado menú correspondiente al usuario
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+    console.log(this.menuItems);
   }
   isMobileMenu() {
       if ($(window).width() > 991) {

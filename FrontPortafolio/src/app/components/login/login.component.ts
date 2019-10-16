@@ -83,6 +83,7 @@ export class LoginComponent implements OnInit {
     apellido_m:string,
     id_user:string
   ){
+    localStorage.setItem('e',this.login.email);
     localStorage.setItem('empresa',id_empresa);
     localStorage.setItem('id',id_user);
     localStorage.setItem('img',foto);

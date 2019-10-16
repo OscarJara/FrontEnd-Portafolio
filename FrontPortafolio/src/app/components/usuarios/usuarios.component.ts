@@ -3,6 +3,10 @@ import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserModel } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
+import { UnityService } from '../../services/unity.service';
+import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,19 +16,43 @@ import { UserModel } from '../../models/user.model';
 })
 export class UsuariosComponent implements OnInit {
 
-
+  Roles:any = [];
+  Unity:any = [];
+  empresa:string;
   user:UserModel = new UserModel();
   users:any[] = [];
   nombre_modal:string;
+  user_image:any = 'assets/img/noimage.png';
+  user_id:number;
+  idRole:any;
+  idUnity:any;
+  photoUser:any;
+  estadoTarjeta:string;
+  activateUserButton:boolean = false;
+
   constructor(
-    private auth:AuthService,
+    private auth:UserService,
+    private unity:UnityService,
     private modalService:NgbModal
   ) { }
 
   ngOnInit() {
-    this.ListUser();
+    this.Roles = [];
+    this.activateUserButton = false;
+    this.Unity = [];
+    this.users = [];
+    this.empresa = localStorage.getItem('empresa');
+    this.ListAllUser();
+    this.ListRoles(localStorage.getItem('e'));
+    this.ListUnity(this.empresa);
   }
-
+  setIdRole(val){
+    this.idRole = val;
+  }
+  setIdUnity(val){
+    console.log(val);
+    this.idUnity = val;
+  }
   DeleteUser(id_user){
     Swal.fire({
       allowOutsideClick:false,
@@ -41,6 +69,7 @@ export class UsuariosComponent implements OnInit {
               type:'success',
               text:resp['msg']
             });
+            this.ngOnInit();
           }else{
             Swal.fire({
               allowOutsideClick:false,
@@ -59,8 +88,8 @@ export class UsuariosComponent implements OnInit {
           })
         });
   }
-  ListUser(){
-
+  ListAllUser(){
+    
     Swal.fire({
       allowOutsideClick:false,
       type:'info',
@@ -68,10 +97,15 @@ export class UsuariosComponent implements OnInit {
     });
     Swal.showLoading();
 
-    this.auth.GetUsers()
+    this.auth.GetUsers(this.empresa,'all')
       .subscribe( resp =>{
         if (resp['status'] === 200){
             resp['data'].forEach(element => {
+              if (element.estado){
+                element.estado_escrito = 'Activado';
+              }else{
+                element.estado_escrito = 'Desactivado';
+              }
               if (element.imagen.length>0){
                 element.imagen =`data:image/jpg;base64,${element.imagen}`;
               }else{
@@ -100,13 +134,186 @@ export class UsuariosComponent implements OnInit {
           })
         });
   }
-
-  AbrirModal(modal,modal_nombre,nombre,apellido_materno,apellido_paterno,id){
-    this.user.id = id;
-    this.user.nombre = nombre;
-    this.user.apmaterno = apellido_materno;
-    this.user.appaterno = apellido_paterno;
-    this.nombre_modal = modal_nombre;
-    this.modalService.open(modal);
+  ListRoles(email){
+    this.auth.GetRole(email)
+        .subscribe( resp=>{
+          if (resp['status'] === 200){
+            this.Roles = resp['data'];
+          }
+        },(err)=>{
+          Swal.fire({
+            allowOutsideClick:false,
+            type:'error',
+            showCloseButton:true,
+            text:err.msg
+          })
+        })
   }
+
+  ListUnity(email){
+    this.unity.GetUnity(email)
+        .subscribe( resp=>{
+          if (resp['status'] === 200){
+            this.Unity = resp['data'];
+          }
+        },(err)=>{
+          Swal.fire({
+            allowOutsideClick:false,
+            type:'error',
+            showCloseButton:true,
+            text:err.msg
+          })
+        })
+  }
+  AgregarUsuario(content){
+    this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
+  }
+  ModificarUsuario(content,id){
+    this.user.nombre = id.nombre;
+    this.user.email = id.email;
+    this.user.appaterno = id.apellido_materno;
+    this.user.apmaterno = id.apellido_materno;
+    this.user_id = id.id;
+    this.idRole = id.rol;
+    this.idUnity = id.unidad;
+    this.user_image  = id.imagen;
+
+    if (id.estado){
+      this.estadoTarjeta='green';
+    }else{
+      this.activateUserButton = true;
+      this.estadoTarjeta ='red';
+    }
+    this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
+  }
+
+  activateUser(){
+    console.log(this.user_id);
+    Swal.fire({
+      allowOutsideClick:false,
+      type:'info',
+      text:'Espere'
+    });
+    Swal.showLoading();
+
+    this.auth.ActivateUser(this.user_id)
+        .subscribe( resp =>{
+          if (resp['status'] === 200){
+
+            Swal.fire({
+              allowOutsideClick:false,
+              type:'success',
+              text:resp['msg']
+            });
+            this.modalService.dismissAll();
+            this.ngOnInit()
+            
+          }else{
+            Swal.fire({
+              allowOutsideClick:false,
+              type:'error',
+              text:resp['msg']
+            })
+          }
+          
+        },(err) =>{ 
+
+          Swal.fire({
+            allowOutsideClick:false,
+            type:'error',
+            text:'¡UPS!, Algo Salio Mal'
+          })
+        });
+  }
+
+  setPhoto(userPhoto:File){
+    var reader = new FileReader();
+
+    reader.readAsDataURL(userPhoto);
+    reader.onload =  () => {
+      this.photoUser = reader.result;
+      this.user_image = reader.result;
+    }
+  }
+
+  ModUser(user:UserModel){
+    console.log(user);
+    Swal.fire({
+      allowOutsideClick:false,
+      type:'info',
+      text:'Espere'
+    });
+    Swal.showLoading();
+    this.idRole
+    this.idUnity 
+    this.user_image  
+
+    this.auth.ModifyUser(user,this.idRole,this.idUnity,this.user_image,this.user_id)
+        .subscribe( resp =>{
+          if (resp['status'] === 200){
+
+            Swal.fire({
+              allowOutsideClick:false,
+              type:'success',
+              text:resp['msg']
+            });
+            this.modalService.dismissAll();
+            this.ngOnInit()
+          }else{
+            Swal.fire({
+              allowOutsideClick:false,
+              type:'error',
+              text:resp['msg']
+            })
+          }
+          
+        },(err) =>{ 
+
+          Swal.fire({
+            allowOutsideClick:false,
+            type:'error',
+            text:'¡UPS!, Algo Salio Mal'
+          })
+        });
+  }
+  AddUser(user:UserModel){
+    console.log(user);
+    Swal.fire({
+      allowOutsideClick:false,
+      type:'info',
+      text:'Espere'
+    });
+    Swal.showLoading();
+
+    // this.auth.AddUser(user.email,user.nombre,user.appaterno,user.apmaterno,this.idRole,this.idUnity,this.photoUser)
+    this.auth.AddUser(user,this.idRole,this.idUnity,this.photoUser)
+      .subscribe( resp =>{
+        if (resp['status'] === 200){
+
+          Swal.fire({
+            allowOutsideClick:false,
+            type:'success',
+            text:resp['msg']
+          });
+          this.users.push(resp['data']);
+          this.modalService.dismissAll();
+        }else{
+          Swal.fire({
+            allowOutsideClick:false,
+            type:'error',
+            text:resp['msg']
+          })
+        }
+        
+      },(err) =>{ 
+
+        Swal.fire({
+          allowOutsideClick:false,
+          type:'error',
+          text:'¡UPS!, Algo Salio Mal'
+        })
+      });
+
+  }
+
 }
