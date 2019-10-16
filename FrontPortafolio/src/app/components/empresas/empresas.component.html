@@ -1,1 +1,120 @@
-<p>empresas works!</p>
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<div id="wrapper">
+        <div class="flot-container">
+          <div class="main">
+            <div class="container-fluid">
+              <div class="card shadow mb-4">
+                <div align="right">
+                  <table>
+                    <tr>
+                      <td>
+                        <h1 class="h3 mb-2 text-gray-800">Usuarios</h1>
+                      </td>
+                      <td></td>
+                      <td>
+                        <button class="btn btn-outline-primary" id='add-button'
+                          (click)="AbrirModal(nombreModal,'Crear Empresa','','','',0)"></button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="card-header py-3">
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Nombre</th>
+                          <th>RUT</th>
+                          <th>Direccion</th>
+                          <th>Ciudad</th>
+                          <!--<th>estado</th>-->
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor='let empresa of empresas ; let i = index '>
+                          <td>{{i+1}}</td>
+                          <td>{{empresa.nombre}}</td>
+                          <td>{{empresa.rut}}</td>
+                          <td>{{empresa.direccion}}</td>
+                          <td>{{empresa.ciudad}}</td>
+                          <!--<td>{{empresa.estado}}</td>-->
+                          <td><button class="btn btn-outline-success" id='update-button' (click)="AbrirModal(
+                                                                                                      nombreModal,
+                                                                                                      'Modificar Empresa',
+                                                                                                      empresa.nombre,
+                                                                                                      empresa.rut,
+                                                                                                      empresa.direccion,
+                                                                                                      empresa.id)"></button>
+                          </td>
+                          <td><button class="btn btn-outline-danger" id="delete-button"
+                              (click)='DeleteCompany(user.id)'></button></td>
+                        </tr>
+      
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+      </div>
+          </div>
+      </div>
+      </div>
+      
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+      </a>
+      
+      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            ...
+          </div>
+        </div>
+      </div>
+      
+      <ng-template #nombreModal let-c="close" let-d="dismiss" class="animated fadeIn">
+      
+        <div class="modal-header"> {{nombre_modal}}
+          <button type="button" class="close" (click)="c('')" id="button-close"></button>
+        </div>
+        <div class="modal-dialog modal-lg" role="dialog" aria-labelledby="myLargeModalLabel">
+          <div class="modal-dialog modal-lg">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" class="form-control" [(ngModel)]='user.nombre' name="nombre" placeholder="Nombre">
+                </div>
+      
+                <div class="form-group col-md-6">
+                  <label for="appmaterno">Apellito Materno</label>
+                  <input type="text" class="form-control" [(ngModel)]='user.apmaterno' name="appmaterno"
+                    placeholder="Apellido Materno">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="appaterno">Apellido Paterno</label>
+                  <input type="text" class="form-control" [(ngModel)]='user.appaterno' name="appaterno"
+                    placeholder="Apellido Paterno">
+                </div>
+      
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-10">
+                  <label for="exampleFormControlFile1">Imagen</label>
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" id='save-button' align='center'></button>
+            </form>
+          </div>
+        </div>
+      </ng-template>
+      
