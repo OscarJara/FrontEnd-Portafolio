@@ -1,0 +1,124 @@
+<app-navbar></app-navbar>
+
+
+<div class="RectangleContent">
+    <button>
+        <img *ngIf ='idRolUser ==0 || idRolUser == 1'
+            class='btn primary'
+            (click)='AgregarProceso(add)'  src="https://img.icons8.com/ios-filled/40/000000/add-column.png">
+    </button>
+    <button>
+        <img  *ngIf='procesos' class='btn primary'
+            (click)='VerMas()'
+             src="https://img.icons8.com/ios-glyphs/40/000000/connection-status-off.png">
+
+    </button>
+    <ngx-simplebar [options]="options">
+        <div class="card-columns" >
+            <app-tarjeta-proceso  
+                    (VerProcesoID)='VerProcesoID($event)'
+                    (EliminarProcesoID)='EliminarProcesoID($event)'
+                    (ModificarProcesoID)='ModificarProcesoID($event)'
+                    [Procesos]="Proceso" 
+                    [idProceso]="Proceso.id" 
+                    *ngFor="let Proceso of procesos; let i = index"></app-tarjeta-proceso>
+
+        </div>
+    </ngx-simplebar>        
+    
+
+</div>
+
+
+
+<ng-template #add let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Agregar Proceso</h4>
+    &nbsp; 
+    
+            
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+        <form class="user" (ngSubmit)='CrearProcess(f)'
+            #f = 'ngForm'>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                   
+                  <mat-form-field>
+                  <!--  <span *ngIf="f.submitted && f.controls['nombre'].errors" 
+                                    class="text-danger animated fadeIn">El Nombre Proceso es obligatorio <br></span>
+                        <label for="appaterno">Nombre Proceso:</label>
+                        <input type="text" 
+                            class="form-control" 
+                            [(ngModel)]='process.nombre'
+                            name="nombre"
+                            required
+                            placeholder="Nombre">-->
+                    <br>
+                    <input matInput  
+                      [(ngModel)]='process.nombre'
+                            name="nombre"
+                            required
+                            placeholder="Nombre">
+
+                  </mat-form-field> 
+                </div>
+                <div class="form-group col-md-6">
+                    
+                  <mat-form-field>
+                    <!--  <span *ngIf="f.submitted && f.controls['detalle'].errors" 
+                              class="text-danger animated fadeIn">El Detalle del Proceso es obligatorio <br></span>
+                      <label for="appmaterno">Detalle:</label>
+                      <textarea class="form-control" 
+                          [(ngModel)]='process.detalle'
+                          name="detalle"
+                          required
+                          placeholder="">
+                      </textarea>-->
+
+                    <textarea matInput  
+                      [(ngModel)]='process.detalle'
+                          name="detalle"
+                          required
+                          placeholder="Detalle"></textarea>
+                            
+                  </mat-form-field> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <span *ngIf="f.submitted && f.controls['fecha_inicio'].errors" 
+                            class="text-danger animated fadeIn">La Fecha inicio del Proceso es obligatorio <br></span>
+                    <label for="appaterno">Fecha Inicio:</label>
+                    <input type="date" 
+                        [(ngModel)]='process.fecha_inicio'
+                        name="fecha_inicio"
+                        required
+                        placeholder="">
+                </div>
+                <div class="form-group col-md-6">
+                    <span *ngIf="f.submitted && f.controls['fecha_termino'].errors" 
+                            class="text-danger animated fadeIn">La Fecha Termino del Proceso es obligatorio <br></span>
+                    <label for="appmaterno">Fecha Término:</label>
+                    <input type="date" 
+                            [(ngModel)]='process.fecha_termino'
+                            name="fecha_termino"
+                            required
+                            placeholder="">
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button class="btn btn-outline-secondary"  
+                align='center'>Crear</button>
+            <button type="button"  class="btn btn-outline-secondary"
+                (click)="modal.close('Ok click')">Cancelar</button>
+            
+            </div>
+
+        </form>
+  </div>
+  
+</ng-template>

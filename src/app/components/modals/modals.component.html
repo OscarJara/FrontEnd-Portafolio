@@ -1,0 +1,25 @@
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th *ngFor='let header of headers;'>{{header}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let user of users ; let i = index '>
+                <td *ngFor='let us of user'>{{us}}</td>
+                <!--<td>{{user.nombre}}</td>
+                <td>{{user.apellido_paterno}}</td>
+                <td>{{user.apellido_materno}}</td>
+                <td><img class="img-profile rounded-circle img-thumb" [src]="user.imagen"></td>
+                <td>{{user.estado_escrito}}</td>
+                <td><button class="btn btn-outline-success" id='update-button' (click)="ModificarUsuario(modify,user)"></button>
+                </td>
+                <td><button class="btn btn-outline-danger" id="delete-button"
+                    (click)='DeleteUser(user.id)'></button></td>-->
+              </tr>
+
+            </tbody>
+          </table>
+
+
+          
