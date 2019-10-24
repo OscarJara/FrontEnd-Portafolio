@@ -1,0 +1,206 @@
+.desktop {
+    width               : 100%;
+    min-width           : 1024px;
+    height              : 100vh;
+    min-height          : 1024px;
+    position            : relative;
+    overflow            : hidden;
+    margin              : 0px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color    : rgba(255, 255, 255, 1.0);
+  }
+  a {
+    text-decoration     : none;
+  }
+  div {
+    -webkit-text-size-adjust: none;
+  }
+  .anima-full-width-a {
+    width               : 100%;
+  }
+  .anima-full-height-a {
+    height              : 100%;
+  }
+  div {
+    -webkit-text-size-adjust: none;
+  }
+  .desktop .rectangle {
+    background-color    : rgba(255,255,255,0.0);
+    top                 : 266px;
+    height              : 103px;
+    width               : 431px;
+    position            : absolute;
+    margin              : 0;
+    left                : 282px;
+    -ms-transform       : rotate(0deg); /* IE 9 */
+    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+    transform           : rotate(0deg);
+    opacity             : 0.38;
+  }
+  .desktop .loremipsum {
+    background-color    : rgba(255,255,255,0.0);
+    top                 : 24px;
+    height              : auto;
+    width               : auto;
+    position            : absolute;
+    margin              : 0;
+    left                : 45px;
+    -ms-transform       : rotate(0deg); /* IE 9 */
+    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+    transform           : rotate(0deg);
+    font-family         : "GurmukhiMN", Helvetica, Arial, serif;
+    font-size           : 15.0px;
+    color               : rgba(0, 0, 0, 1.0);
+    text-align          : center;
+    line-height         : 22.0px;
+  }
+
+  .desktop .rectangle1 {
+    background-color    : rgba(215, 215, 215, 1.0);
+    top                 : 310px;
+    height              : 13px;
+    box-sizing          : border-box;
+    width               : 12px;
+    position            : absolute;
+    margin              : 0;
+    left                : 283px;
+    border-style        : solid;
+    border-width        : 1px;
+    border-color        : rgba(150, 150, 150, 1.0);
+    -ms-transform       : rotate(0deg); /* IE 9 */
+    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+    transform           : rotate(0deg);
+  }
+  .desktop .loremipsumdolorsi {
+    background-color    : rgba(255,255,255,0.0);
+    top                 : 1px;
+    height              : auto;
+    width               : 198px;
+    position            : absolute;
+    margin              : 0;
+    left                : 230px;
+    -ms-transform       : rotate(0deg); /* IE 9 */
+    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+    transform           : rotate(0deg);
+    font-family         : "GurmukhiMN", Helvetica, Arial, serif;
+    font-size           : 8.0px;
+    color               : rgba(170, 164, 164, 1.0);
+    text-align          : left;
+    line-height         : 12.0px;
+  }
+  .desktop .oval {
+    background-color    : rgba(255,255,255,0.0);
+    top                 : 326px;
+    height              : 18px;
+    width               : 17px;
+    position            : absolute;
+    margin              : 0;
+    left                : 304px;
+    -ms-transform       : rotate(0deg); /* IE 9 */
+    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+    transform           : rotate(0deg);
+  }
+  .desktop .oval1 {
+    background-color    : rgba(255,255,255,0.0);
+    top                 : 326px;
+    height              : 18px;
+    width               : 17px;
+    position            : absolute;
+    margin              : 0;
+    left                : 313px;
+    -ms-transform       : rotate(0deg); /* IE 9 */
+    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+    transform           : rotate(0deg);
+  }
+  .desktop .oval2 {
+    background-color    : rgba(255,255,255,0.0);
+    top                 : 326px;
+    height              : 18px;
+    width               : 17px;
+    position            : absolute;
+    margin              : 0;
+    left                : 322px;
+    -ms-transform       : rotate(0deg); /* IE 9 */
+    -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+    transform           : rotate(0deg);
+  }
+  /* .anima-animate-appear prefix for appear animations */
+  .anima-animate-appear {
+    opacity             : 0;
+    display             : block;
+    -webkit-animation   : anima-reveal 0.3s ease-in-out 1 normal forwards;
+    -moz-animation      : anima-reveal 0.3s ease-in 1 normal forwards;
+    -o-animation        : anima-reveal 0.3s ease-in-out 1 normal forwards;
+    animation           : anima-reveal 0.3s ease-in-out 1 normal forwards;
+  }
+  .anima-animate-disappear {
+    opacity             : 1;
+    display             : block;
+    -webkit-animation   : anima-reveal 0.3s ease-in-out 1 reverse forwards;
+    -moz-animation      : anima-reveal 0.3s ease-in 1 normal forwards;
+    -o-animation        : anima-reveal 0.3s ease-in-out 1 reverse forwards;
+    animation           : anima-reveal 0.3s ease-in-out 1 reverse forwards;
+  }
+  .anima-animate-nodelay {
+    -webkit-animation-delay: 0;
+    -moz-animation-delay: 0;
+    -o-animation-delay  : 0;
+    animation-delay     : 0;
+  }
+  @-webkit-keyframes anima-reveal {
+    0%
+     
+    {
+        opacity: 0;
+      }
+    
+      
+    100%
+     
+    {
+        opacity: 1;
+      }
+  }
+  @-moz-keyframes anima-reveal {
+    0%
+     
+    {
+        opacity: 0;
+      }
+    
+      
+    100%
+     
+    {
+        opacity: 1;
+      }
+  }
+  @-o-keyframes anima-reveal {
+    0%
+     
+    {
+        opacity: 0;
+      }
+    
+      
+    100%
+     
+    {
+        opacity: 1;
+      }
+  }
+  @keyframes anima-reveal {
+    0%
+     
+    {
+        opacity: 0;
+      }
+    
+      
+    100%
+     
+    {
+        opacity: 1;
+      }
+  }

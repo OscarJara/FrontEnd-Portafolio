@@ -1,1 +1,207 @@
-<p>empresas works!</p>
+
+  <div class="card shadow mb-4">
+    <div align="right">
+      <table>
+        <tr>
+          <td align="left">
+            <h1 class="h3 mb-2 text-gray-800">Empresas</h1>
+          </td>
+          <td></td>
+          <td >
+            <button>
+              <img 
+                (click)="AgregarEmpresa(create)" src="https://img.icons8.com/ios-filled/40/000000/add-column.png">
+            </button>
+
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table"  width="126%" cellspacing="0">
+          <thead class='thead-light'>
+            <tr>
+              <th scope="col" >#</th>
+              <th scope="col" >Nombre</th>
+              <th scope="col" >Direccion</th>
+              <th scope="col" >Ciudad</th>
+              <th scope="col" >Rut</th>
+              <th scope="col" >Estado</th>
+              <th ></th>
+              <th ></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let empresa of empresas ; let i = index '>
+              <td scope='row'>{{i+1}}</td>
+              <td>{{empresa.nombre}}</td>
+              <td>{{empresa.direccion}}</td>
+              <td>{{empresa.ciudad}}</td>
+              <td>{{empresa.rut | rut}}</td>
+              <td>{{empresa.estado_escrito}}</td>
+              <td >
+                <button>
+                  <img (click)="ModificarEmpresa(modify,empresa)" src="https://img.icons8.com/material-sharp/24/000000/edit-file.png">
+                </button>
+              </td>
+              <td>
+                <button>
+                  <img src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png" (click)='DeleteCompany(empresa.id)'>
+                </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<ng-template #create let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Crear Empresa</h4>
+    &nbsp; 
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="user" (ngSubmit)='CreateEmpresa(f)'
+        #f = 'ngForm'>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <mat-form-field>
+                  <input matInput  
+                    [(ngModel)]='empresa.nombre'
+                    name="nombre" 
+                    required
+                    placeholder="Nombre">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-6">
+            <mat-form-field>
+                  <input matInput  
+                    [(ngModel)]='empresa.direccion'
+                    name="direccion" 
+                    required
+                    placeholder="Direccion">
+            </mat-form-field>
+               
+          </div>
+          
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <mat-form-field>
+                  <input matInput  
+                    [(ngModel)]='empresa.ciudad'
+                    name="ciudad" 
+                    required
+                    placeholder="Ciudad">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-6">
+            <mat-form-field>
+                  <input matInput  
+                    [(ngModel)]='empresa.rut'
+                    name="rut" 
+                    required 
+                    placeholder="Rut">
+            </mat-form-field>
+               
+          </div>
+          
+        </div>
+
+
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary"  
+              align='center'>Crear</button>
+          <button type="button"  class="btn btn-outline-secondary"
+            (click)="modal.close('Ok click')">Cancelar</button>
+          
+        </div>
+        
+      </form>
+  </div>
+  
+</ng-template>
+
+<ng-template #modify let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Modificar Empresa</h4>
+    &nbsp; 
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="user" (ngSubmit)='ModEmpresa(f)'
+        #f = 'ngForm'>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <mat-form-field>
+                  <input matInput  
+                    [(ngModel)]='empresa.nombre'
+                    name="nombre" 
+                    required
+                    placeholder="Nombre">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-6">
+            <mat-form-field>
+                  <input matInput  
+                    [(ngModel)]='empresa.direccion'
+                    name="direccion" 
+                    required
+                    placeholder="Direccion">
+            </mat-form-field>
+               
+          </div>
+          
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <mat-form-field>
+                  <input matInput  
+                    [(ngModel)]='empresa.ciudad'
+                    name="ciudad" 
+                    required
+                    placeholder="Ciudad">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-6">
+            <mat-form-field>
+                  <input matInput  
+                    [(ngModel)]='empresa.rut'
+                    name="rut" 
+                    required
+                    placeholder="Rut">
+            </mat-form-field>
+               
+          </div>
+          
+        </div>
+
+
+        <div class="modal-footer">
+            <button  type= 'button' *ngIf='!empresa.estado'class="btn btn-outline-secondary"  
+              align='center'
+              (click)="activateCompany(empresa.id)">Activar</button>
+          <button class="btn btn-outline-secondary"  
+              align='center'>Modificar</button>
+          <button type="button"  class="btn btn-outline-secondary"
+            (click)="modal.close('Ok click')">Cancelar</button>
+          
+        </div>
+        
+      </form>
+  </div>
+  
+</ng-template>

@@ -1,65 +1,66 @@
-<app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
-<div id="wrapper">
-  <div class="flot-container">
-    <div class="main">
-      <div class="container-fluid">
-        <div class="card shadow mb-4">
-          <div align="right">
-            <table>
-              <tr>
-                <td>
-                  <h1 class="h3 mb-2 text-gray-800">Usuarios</h1>
-                </td>
-                <td></td>
-                <td>
-                  <button class="btn btn-outline-primary" id='add-button'
-                    (click)="AgregarUsuario(content)">
-                    </button>
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="card-header py-3">
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Apellido Paterno</th>
-                    <th>Apellido Materno</th>
-                    <th>Foto</th>
-                    <th>Estado</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor='let user of users ; let i = index '>
-                    <td>{{i+1}}</td>
-                    <td>{{user.nombre}}</td>
-                    <td>{{user.apellido_paterno}}</td>
-                    <td>{{user.apellido_materno}}</td>
-                    <td><img class="img-profile rounded-circle img-thumb" [src]="user.imagen"></td>
-                    <td>{{user.estado_escrito}}</td>
-                    <td><button class="btn btn-outline-success" id='update-button' (click)="ModificarUsuario(modify,user)"></button>
-                    </td>
-                    <td><button class="btn btn-outline-danger" id="delete-button"
-                        (click)='DeleteUser(user.id)'></button></td>
-                  </tr>
 
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-</div>
+<!--<div class="MaintainerContent">-->
+
+  <div class="card shadow mb-4">
+    <div align="right">
+      <table>
+        <tr>
+          <td align="left">
+            <h1 class="h3 mb-2 text-gray-800">Usuarios</h1>
+          </td>
+          <td></td>
+          <td >
+            <button>
+              <img *ngIf ='idRolUser ==0'
+              (click)="AgregarUsuario(content)"  src="https://img.icons8.com/dotty/40/000000/add-administrator.png">
+            </button>
+          </td>
+        </tr>
+      </table>
     </div>
-</div>
-</div>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table"  width="126%" cellspacing="0">
+          <thead class='thead-light'>
+            <tr>
+              <th scope="col" >#</th>
+              <th scope="col" >Nombre</th>
+              <th scope="col" >Apellido Paterno</th>
+              <th scope="col" >Apellido Materno</th>
+              <th scope="col" >Foto</th>
+              <th scope="col" >Estado</th>
+              <th *ngIf ='idRolUser ==0'></th>
+              <th *ngIf ='idRolUser ==0'></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let user of users ; let i = index '>
+              <td scope='row'>{{i+1}}</td>
+              <td>{{user.nombre}}</td>
+              <td>{{user.apellido_paterno}}</td>
+              <td>{{user.apellido_materno}}</td>
+              <td><img class="img-profile rounded-circle img-thumb" [src]="user.imagen"></td>
+              <td>{{user.estado_escrito}}</td>
+              <td *ngIf ='idRolUser ==0'>
+                <button>
+                  <img (click)="ModificarUsuario(modify,user)" src="https://img.icons8.com/material-sharp/24/000000/edit-file.png">
+                </button>
+              </td>
+              <td *ngIf ='idRolUser ==0'>
+                <button>
+                  <img src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png" (click)='DeleteUser(user.id)'>
+                </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
 
 <a class="scroll-to-top rounded" href="#page-top">
   <i class="fas fa-angle-up"></i>
@@ -83,73 +84,106 @@
         #f = 'ngForm'>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <span *ngIf="f.submitted && f.controls['nombre'].errors" 
-                        class="text-danger animated fadeIn">El nombre es obligatorio</span>
-            <label for="nombre">Nombre</label>
-            <input type="text" 
+            <mat-form-field>
+             <!-- <span *ngIf="f.submitted && f.controls['nombre'].errors" 
+                            class="text-danger animated fadeIn">El nombre es obligatorio</span>
+             <label for="nombre">Nombre</label>
+                  <input type="text" 
                     class="form-control" 
                     [(ngModel)]='user.nombre'
                     name="nombre" 
                     required
+                    placeholder="Nombre">-->
+
+                  <input matInput  
+                    [(ngModel)]='user.nombre'
+                    name="nombre" 
+                    required
                     placeholder="Nombre">
+            </mat-form-field>
           </div>
           <div class="form-group col-md-6">
-            <span *ngIf="f.submitted && f.controls['email'].errors" 
+            
+            <mat-form-field>
+              <!-- <span *ngIf="f.submitted && f.controls['email'].errors" 
                         class="text-danger animated fadeIn">El email es obligatorio <br></span>
-            <label for="nombre">Email</label>
-            <input 
+             <label for="nombre">Email</label>
+                  <input 
                     [(ngModel)] ='user.email'
                     type="email" 
                     class="form-control" 
                     email
                     name="email" 
                     required
+                    placeholder="Correo">-->
+
+                  <input matInput  
+                    [(ngModel)] ='user.email'
+                    type="email" 
+                    email
+                    name="email" 
+                    required
                     placeholder="Correo">
-                            
+            </mat-form-field>       
           </div>
           
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <span *ngIf="f.submitted && f.controls['appaterno'].errors" 
+           
+           
+            <mat-form-field>
+              <!-- <span *ngIf="f.submitted && f.controls['appaterno'].errors" 
                         class="text-danger animated fadeIn">El Apellido Paterno es obligatorio <br></span>
-            <label for="appaterno">Apellido Paterno</label>
+              <label for="appaterno">Apellido Paterno</label>
             <input type="text" 
                   class="form-control" 
                   [(ngModel)]='user.appaterno'
                   name="appaterno"
                   required
-                  placeholder="Apellido Paterno">
+                  placeholder="Apellido Paterno">-->
+
+                  <input matInput  
+                    [(ngModel)]='user.appaterno'
+                    name="appaterno"
+                    required
+                    placeholder="Apellido Paterno">
+            </mat-form-field>
           </div>
           <div class="form-group col-md-6">
-            <span *ngIf="f.submitted && f.controls['apmaterno'].errors" 
+            <mat-form-field>
+             <!-- <span *ngIf="f.submitted && f.controls['apmaterno'].errors" 
                         class="text-danger animated fadeIn">El Apellido Materno es obligatorio <br></span>
-            <label for="appmaterno">Apellito Materno</label>
+              <label for="appmaterno">Apellito Materno</label>
             <input type="text" 
                     class="form-control" 
                     [(ngModel)]='user.apmaterno'
                     name="apmaterno"
                     required
+                    placeholder="Apellido Materno">-->
+
+                  <input matInput  
+                    [(ngModel)]='user.apmaterno'
+                    name="apmaterno"
+                    required
                     placeholder="Apellido Materno">
+            </mat-form-field>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-              <span *ngIf="f.submitted && selectRole.value <0" 
-                        class="text-danger animated fadeIn">El Rol es obligatorio <br></span>
-              <label>Rol: </label>
-              <select  #selectRole (change)='setIdRole(selectRole.value)'>
-                  <option value="-1">--ROLES--</option>
+              <label>Rol: </label><br>
+              <select  style="width:200px;border:1px solid #04467E;font-size:18px" #selectRole (change)='setIdRole(selectRole.value)'>
+                  <option value="idRole">--ROLES--</option>
                   <option *ngFor="let roles of Roles" value='{{roles.id}}'>
                       {{roles.nombre}}
                   </option>
               </select>
           </div>
           <div class="form-group col-md-6">
-              <span *ngIf="f.submitted && selectUnity.value <0" 
-                        class="text-danger animated fadeIn">La Unidad es obligatorio <br></span>
-              <label>Unidad: </label>
-              <select #selectUnity (change)='setIdUnity(selectUnity.value)'>
+              <label>Unidad: </label><br>
+             
+              <select style="width:200px;border:1px solid #04467E;font-size:18px" #selectUnity  (change)='setIdUnity(selectUnity.value)'>
                   <option value="-1">--UNIDADES--</option>
                   <option *ngFor="let unity of Unity" value={{unity.id}}>
                       {{unity.nombre}}
@@ -157,18 +191,18 @@
               </select>
           </div>
         </div>
-
+        
         <div class="form-row">
           <div class="form-group col-md-10">
-            <label for="exampleFormControlFile1" >Imagen</label>
+            <label for="exampleFormControlFile1" class='subir' >Imagen</label>
             <input (change)='setPhoto($event.target.files[0])' type="file" class="form-control-file" id="userPhoto">
           </div>
         </div>
 
         <div class="modal-footer">
-          <button class="btn btn-success"  
+          <button class="btn btn-outline-secondary"  
               align='center'>Agregar</button>
-          <button type="button"  class="btn btn-danger"
+          <button type="button"  class="btn btn-outline-secondary"
             (click)="modal.close('Ok click')">Cancelar</button>
           
         </div>
@@ -200,46 +234,75 @@
 
         <div class="form-row">
           <div class="form-group col-md-6">
-            <span *ngIf="f.submitted && f.controls['nombre'].errors" 
-                        class="text-danger animated fadeIn">El nombre es obligatorio</span>
-            <label for="nombre">Nombre</label>
-            <input type="text" 
+            <mat-form-field>
+             <!-- <span *ngIf="f.submitted && f.controls['nombre'].errors" 
+                            class="text-danger animated fadeIn">El nombre es obligatorio</span>
+             <label for="nombre">Nombre</label>
+                  <input type="text" 
                     class="form-control" 
                     [(ngModel)]='user.nombre'
                     name="nombre" 
                     required
+                    placeholder="Nombre">-->
+
+                  <input matInput  
+                    [(ngModel)]='user.nombre'
+                    name="nombre" 
+                    required
                     placeholder="Nombre">
+            </mat-form-field>
           </div>
           <div class="form-group col-md-6">
-            <span *ngIf="f.submitted && f.controls['email'].errors" 
+            
+            <mat-form-field>
+              <!-- <span *ngIf="f.submitted && f.controls['email'].errors" 
                         class="text-danger animated fadeIn">El email es obligatorio <br></span>
-            <label for="nombre">Email</label>
-            <input 
+            label for="nombre">Email</label>
+                  <input 
                     [(ngModel)] ='user.email'
                     type="email" 
                     class="form-control" 
                     email
                     name="email" 
                     required
+                    placeholder="Correo">-->
+
+                  <input matInput  
+                    [(ngModel)] ='user.email'
+                    type="email" 
+                    email
+                    name="email" 
+                    required
                     placeholder="Correo">
-                            
+            </mat-form-field>       
           </div>
           
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <span *ngIf="f.submitted && f.controls['appaterno'].errors" 
+           
+           
+            <mat-form-field>
+              <!-- <span *ngIf="f.submitted && f.controls['appaterno'].errors" 
                         class="text-danger animated fadeIn">El Apellido Paterno es obligatorio <br></span>
-            <label for="appaterno">Apellido Paterno</label>
+              <label for="appaterno">Apellido Paterno</label>
             <input type="text" 
                   class="form-control" 
                   [(ngModel)]='user.appaterno'
                   name="appaterno"
                   required
-                  placeholder="Apellido Paterno">
+                  placeholder="Apellido Paterno">-->
+
+                  <input matInput  
+                    [(ngModel)]='user.appaterno'
+                    name="appaterno"
+                    required
+                    placeholder="Apellido Paterno">
+            </mat-form-field>
           </div>
           <div class="form-group col-md-6">
-            <span *ngIf="f.submitted && f.controls['apmaterno'].errors" 
+            <mat-form-field>
+              <!--<span *ngIf="f.submitted && f.controls['apmaterno'].errors" 
                         class="text-danger animated fadeIn">El Apellido Materno es obligatorio <br></span>
             <label for="appmaterno">Apellito Materno</label>
             <input type="text" 
@@ -247,30 +310,36 @@
                     [(ngModel)]='user.apmaterno'
                     name="apmaterno"
                     required
+                    placeholder="Apellido Materno">-->
+
+                  <input matInput  
+                    [(ngModel)]='user.apmaterno'
+                    name="apmaterno"
+                    required
                     placeholder="Apellido Materno">
+            </mat-form-field>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-              
-              <label>Rol: </label>
-              <select  #selectRole (change)='setIdRole(selectRole.value)'>
-                  <option value="idRole">--ROLES--</option>
+
+              <label>Rol: </label><br>
+              <select style="width:200px;border:1px solid #04467E;font-size:18px" #selectRole (change)='setIdRole(selectRole.value)'>
+                  <option value="-1">--ROLES--</option>
                   <option *ngFor="let roles of Roles" value='{{roles.id}}'>
                       {{roles.nombre}}
                   </option>
               </select>
           </div>
           <div class="form-group col-md-6">
-
-              <label>Unidad: </label>
-              <select #selectUnity (change)='setIdUnity(selectUnity.value)'>
-                  <option value="-1">--UNIDADES--</option>
-                  <option *ngFor="let unity of Unity" value={{unity.id}}>
-                      {{unity.nombre}}
-                  </option>
-              </select>
-          </div>
+                <label>Unidad: </label><br>
+                <select style="width:200px;border:1px solid #04467E;font-size:18px" #selectUnity (change)='setIdUnity(selectUnity.value)'>
+                    <option value="-1">--UNIDADES--</option>
+                    <option *ngFor="let unity of Unity" value={{unity.id}}>
+                        {{unity.nombre}}
+                    </option>
+                </select>
+            </div>
         </div>
 
         <div class="form-row">
@@ -282,12 +351,12 @@
         </div>
 
         <div class="modal-footer">
-          <button  type= 'button' *ngIf='activateUserButton'class="btn btn-primary"  
+          <button  type= 'button' *ngIf='activateUserButton'class="btn btn-outline-secondary"  
               align='center'
               (click)="activateUser()">Activar</button>
-          <button class="btn btn-success"  
+          <button class="btn btn-outline-secondary"  
               align='center'>Modificar</button>
-          <button type="button"  class="btn btn-danger"
+          <button type="button"  class="btn btn-outline-secondary"
             (click)="modal.close('Ok click')">Cancelar</button>
           
         </div>

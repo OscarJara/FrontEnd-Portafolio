@@ -1,0 +1,9 @@
+<app-navbar></app-navbar>
+
+<div class='RectangleContent'>
+    <mat-tab-group>
+        <mat-tab label="Usuarios"> <app-usuarios></app-usuarios> </mat-tab>
+        <mat-tab label="Roles"> <app-roles></app-roles> </mat-tab>
+        <mat-tab *ngIf = 'id_rol==0' label="Empresas"> <app-empresas></app-empresas> </mat-tab>
+    </mat-tab-group>
+</div>

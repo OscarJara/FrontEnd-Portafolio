@@ -8,15 +8,27 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { ProcesosComponent } from './components/procesos/procesos.component';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
+import { ModalsComponent } from './components/modals/modals.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { ProcesoComponent } from './components/proceso/proceso.component';
+import { EmpresasComponent } from './components/empresas/empresas.component';
+import { ArbolComponent } from './components/arbol/arbol.component';
+import { MantenedorComponent } from './components/mantenedor/mantenedor.component';
 
 
 const routes: Routes = [
 
   { path: 'recovery', component: RecoveryPasswordComponent },
-  { path:'new-password/:token', component:NewPasswordComponent},
+  { path: 'mantenedor', component: MantenedorComponent},
+  { path:'test', component:ArbolComponent},
+  { path: 'new-password/:token', component:NewPasswordComponent},
+  { path: 'empresas', component:EmpresasComponent,canActivate: [AuthGuard]},
+  { path: 'modals', component:ModalsComponent,canActivate: [AuthGuard]},
+  { path: 'roles', component:RolesComponent,canActivate: [AuthGuard]},
   { path: 'login'   , component: LoginComponent },
   { path: 'home'    , component: HomeComponent,canActivate: [AuthGuard] },
   { path: 'procesos'    , component: ProcesosComponent,canActivate: [AuthGuard] },
+  { path: 'proceso/:id' , component:ProcesoComponent,canActivate: [AuthGuard]},
   { path: 'usuarios'    , component: UsuariosComponent,canActivate: [AuthGuard] },
   { path: '404'    , component: NotfoundComponent,canActivate: [AuthGuard] },
   { path: '**', redirectTo: '404' , canActivate: [AuthGuard]}

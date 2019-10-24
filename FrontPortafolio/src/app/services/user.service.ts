@@ -25,9 +25,7 @@ export class UserService {
     return this.http.get(`${this.URL_API}/user?id=${id}&e=${empresa}`);
   }
 
-  GetRole(email:string){
-    return this.http.get(`${this.URL_API}/roles?i=${email}`);
-  }
+
   AddUser(user:UserModel,idRol:number,idUnidad:number,photo:any){
     const params = {
       email:user['form']['value']['email'],

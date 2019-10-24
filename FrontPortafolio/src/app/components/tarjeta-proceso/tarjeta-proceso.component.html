@@ -1,20 +1,135 @@
-<div class="card border-success mb-3">
-    <!--TODO: componente circulo vectorial relleno con color estado-->
-    <div class="card-header">{{procesoTarjeta.nombre}}
-        <svg width="14" height="13">
-            <circle cx="6" cy="6" r="5" stroke="black" stroke-width="1" [attr.fill]="estadoTarjeta" />
-            {{procesoTarjeta.estado}}
-        </svg>
-    </div>
+<div class="card">
     <div class="card-body">
-            <h5 class="card-title">Fecha inicio: {{procesoTarjeta.fechaInicio}}</h5>
-            <h5 class="card-title">Fecha t&eacute;rmino: {{procesoTarjeta.fechaTermino}}</h5>
-            <div>
-                <i class="fas fa-trash"></i>
-                <button id="kill{{procesoTarjeta.idProceso}}"></button>
-                <button id="edit{{procesoTarjeta.idProceso}}"></button>
-                <button id="revisar{{procesoTarjeta.idProceso}}"></button>
-            </div>
+        <div class="mb-3">
+            <h5 class="card-title">
+                <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                    <!--<button class="btn btn-outline-primary dropdown-toggle-split" ngbDropdownToggle  mat-button></button>
+                    --><span class="primary dropdown" ngbDropdownToggle></span>
+                    <div class="dropdown-menu animated fadeIn" ngbDropdownMenu>
+
+                        <button ngbDropdownItem (click)=VerProceso()
+                            type="button" 
+                            class="btn btn-outline-primary btn-block">
+                            Ver más ...
+                        </button>
+                        <button  ngbDropdownItem (click)=EliminarProceso()
+                            type="button" 
+                            class="btn btn-outline-primary btn-block">
+                            Eliminar </button>
+                        <button ngbDropdownItem (click)="ModificarProceso(modify)"
+                            type='button'
+                            class='btn btn-outline-primary btn-block'>
+                            Modificar   
+                            </button>
+                    </div>
+                </div>
+                {{Procesos.nombre}}
+                <svg width="14" height="13">
+                    <circle cx="6" cy="6" r="5" stroke="black" stroke-width="1" [attr.fill]="Procesos.estadoTarjeta" />
+                    {{Procesos.estado}}
+                </svg>
+            </h5>
+        </div>
+        <div class='content-simplebar' style='width:100%; height:100px;'>
+            <ngx-simplebar [options]="{scrollbarMinSize:1}">
+                <div style="width: 100%; height: 100px; position:relative; margin:auto;">
+                    <p class="card-text">{{Procesos.detalle}}</p>
+                </div>
+            </ngx-simplebar> 
+        </div>
+        <h5 class="card-title">Fecha inicio: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fecha t&eacute;rmino: </h5> 
+        <h5>{{Procesos.fecha_inicio}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{Procesos.fecha_termino}}</h5>
     </div>
-    
 </div>
+
+
+
+<ng-template #modify let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Modificar Proceso</h4>
+    &nbsp; 
+    
+            
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+        <form class="user" (ngSubmit)='ModProcess(f)'
+            #f = 'ngForm'>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                   <!-- <span *ngIf="f.submitted && f.controls['nombre'].errors" 
+                                class="text-danger animated fadeIn">El Nombre Proceso es obligatorio <br></span>
+                    <label for="appaterno">Nombre Proceso:</label>
+                    <input type="text" 
+                        class="form-control" 
+                        [(ngModel)]='process.nombre'
+                        name="nombre"
+                        required
+                        placeholder="Nombre">-->
+                    <mat-form-field>
+                        <br>
+                        <input matInput  
+                        [(ngModel)]='process.nombre'
+                                name="nombre"
+                                required
+                                placeholder="Nombre">
+
+                    </mat-form-field> 
+                </div>
+                <div class="form-group col-md-6">
+                   <!-- <span *ngIf="f.submitted && f.controls['detalle'].errors" 
+                            class="text-danger animated fadeIn">El Detalle del Proceso es obligatorio <br></span>
+                    <label for="appmaterno">Detalle:</label>
+                    <textarea class="form-control" 
+                        [(ngModel)]='process.detalle'
+                        name="detalle"
+                        required
+                        placeholder="">
+                    </textarea>-->
+                    <mat-form-field>
+
+                        <textarea matInput  
+                        [(ngModel)]='process.detalle'
+                            name="detalle"
+                            required
+                          placeholder="Detalle"></textarea>
+                            
+                    </mat-form-field> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <span *ngIf="f.submitted && f.controls['fecha_inicio'].errors" 
+                            class="text-danger animated fadeIn">La Fecha inicio del Proceso es obligatorio <br></span>
+                    <label for="appaterno">Fecha Inicio:</label>
+                    <input type="date" 
+                        [(ngModel)]='process.fecha_inicio'
+                        name="fecha_inicio"
+                        required
+                        placeholder="">
+                </div>
+                <div class="form-group col-md-6">
+                    <span *ngIf="f.submitted && f.controls['fecha_termino'].errors" 
+                            class="text-danger animated fadeIn">La Fecha Termino del Proceso es obligatorio <br></span>
+                    <label for="appmaterno">Fecha Término:</label>
+                    <input type="date" 
+                            [(ngModel)]='process.fecha_termino'
+                            name="fecha_termino"
+                            required
+                            placeholder="">
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button class="btn btn-outline-secondary"  
+                align='center'>Modificar</button>
+            <button type="button"  class="btn btn-outline-secondary"
+                (click)="modal.close('Ok click')">Cancelar</button>
+            
+            </div>
+
+        </form>
+  </div>
+  
+</ng-template>

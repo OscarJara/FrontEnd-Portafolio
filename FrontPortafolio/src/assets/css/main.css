@@ -134,6 +134,14 @@ iframe {
   width: 100%;
   margin: 0 auto;
 }
+.flot-process{
+  box-sizing: border-box;
+  width: 100%;
+  height: 275px;
+  padding: -1px 290px 100px;
+  margin: 21px auto 38px;
+  background: transparent;
+}
 .flot-container {
   box-sizing: border-box;
   width: 100%;

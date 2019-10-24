@@ -1,0 +1,135 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar> 
+
+<!--<div class='container-fluid-card'>
+    <div class="flot-container">
+        <div class="card">
+            <div class="card-header">
+                <table>
+                    <tr>
+                        <td>
+                            Nombre Proceso:
+                        </td>
+                        <td>
+                            Fecha inicio:
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td>
+                            lorem ipsum
+                        </td>
+                        <td>
+                            lorem ipsum
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="card-body">
+                <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+                    <fieldset>
+                        <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+                            <li class="mat-tree-node">
+                            <button mat-icon-button disabled></button>
+                            {{node.name}} dawjkdawjkjkadw
+                            </li>
+                        </mat-tree-node>
+                        <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                            <li>
+                            <div class="mat-tree-node">
+                                <button mat-icon-button matTreeNodeToggle
+                                        [attr.aria-label]="'toggle ' + node.name">
+                                <mat-icon class="mat-icon-rtl-mirror">
+                                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                                </mat-icon>
+                                </button>
+                                {{node.name}}
+                            </div>
+                            <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+                                <ng-container matTreeNodeOutlet></ng-container>
+                            </ul>
+                            </li>
+                        </mat-nested-tree-node>
+                    </fieldset>
+                </mat-tree>
+               
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!--<div class="RectangleContent">
+        <div class="touchbar">
+                <div class="rectangle">
+                </div>
+                <div class="nombreproceso">
+                    Nombre Proceso
+                </div>
+                <img anima-src="assets/img/touch-bar-path.png" class="path" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="/>
+                <img anima-src="assets/img/touch-bar-path-3@2x.png" class="path2" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="/>
+                <img anima-src="assets/img/touch-bar-path-3@2x.png" class="path3" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="/>
+                <div class="nombre">
+                    {{NOMBRE}}lorem ipsum
+                </div>
+                <div class="fecha">
+                    {{Fecha}}lorem ipsum
+                </div>
+                <div class="fechainicio">
+                    Fecha Inicio
+                </div>
+                <div class="fechatermino">
+                    Fecha Termino
+                </div>
+                <div class="fecha1">
+                    {{FECHA}}lorem ipsum
+                </div>
+                <button class="buttontouch1 btn-outline-primary">
+                    Volver
+                </button>
+                <button class="buttontouch2 btn-outline-primary">
+                    + Tarea
+                </button>
+
+                <div class='rectangleData'>
+
+                    <div class="card-body">
+                        <app-arbol></app-arbol>
+                    </div>
+                </div>
+            </div>
+</div>-->
+
+<div class="rectangle2">
+</div>
+<div class="rectangle3">
+    <app-arbol></app-arbol>
+</div>
+<div class="nombreproceso">
+    {{nombre}}
+</div>
+<div class="loremipsum">
+    Lorem ipsum
+</div>
+<div class="fechainicio">
+    Fecha Inicio
+</div>
+<div class="a09092012">
+    {{fechaInicio}}
+</div>
+<div class="fechatermino">
+    Fecha Termino
+</div>
+<div class="a090920121">
+    {{fechaTermino}}
+</div>
+<button (click)='volver()'class="buttontouch1 btn btn-outline-secondary">
+    Volver
+</button>
+<button class="buttontouch2 btn btn-outline-secondary">
+    + Tarea
+</button>
+<img anima-src="/assets/img/desktop-hd-line-4.png" class="line4" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="/>
+<img anima-src="/assets/img/desktop-hd-path@2x.png" class="path" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="/>
+<img anima-src="/assets/img/desktop-hd-line-6@2x.png" class="line5" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="/>
+<img anima-src="/assets/img/desktop-hd-line-6@2x.png" class="line6" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="/>

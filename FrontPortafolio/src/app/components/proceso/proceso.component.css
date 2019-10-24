@@ -1,0 +1,202 @@
+.rectangle2 {
+  background-color    : rgba(215, 215, 215, 0.2);
+  top                 : 207px;
+  height              : 765px;
+  box-sizing          : border-box;
+  width               : 1074px;
+  position            : absolute;
+  margin              : 0;
+  left                : 333px;
+  border-radius       : 8px;
+  border-style        : solid;
+  border-width        : 1px;
+  border-color        : rgba(26, 26, 31, 0.596);
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.rectangle3 {
+  background-color    : rgba(215, 215, 215, 1.0);
+  top                 : 402px;
+  height              : 134px;
+  box-sizing          : border-box;
+  width               : 989px;
+  position            : absolute;
+  margin              : 0;
+  left                : 382px;
+  border-radius       : 8px;
+  border-style        : solid;
+  border-width        : 1px;
+  border-color        : rgba(150, 150, 150, 1.0);
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.nombreproceso {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 229px;
+  height              : auto;
+  width               : 182px;
+  position            : absolute;
+  margin              : 0;
+  left                : 362px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "Apple-Chancery", Helvetica, Arial, serif;
+  font-size           : 18.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 28.0px;
+}
+.loremipsum {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 276px;
+  height              : auto;
+  width               : 182px;
+  position            : absolute;
+  margin              : 0;
+  left                : 362px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "Apple-Chancery", Helvetica, Arial, serif;
+  font-size           : 18.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 28.0px;
+}
+.fechainicio {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 229px;
+  height              : auto;
+  width               : 182px;
+  position            : absolute;
+  margin              : 0;
+  left                : 600px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "Apple-Chancery", Helvetica, Arial, serif;
+  font-size           : 18.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 28.0px;
+}
+.a09092012 {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 276px;
+  height              : auto;
+  width               : 182px;
+  position            : absolute;
+  margin              : 0;
+  left                : 600px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "Apple-Chancery", Helvetica, Arial, serif;
+  font-size           : 18.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 28.0px;
+}
+.fechatermino {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 229px;
+  height              : auto;
+  width               : 182px;
+  position            : absolute;
+  margin              : 0;
+  left                : 771px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "Apple-Chancery", Helvetica, Arial, serif;
+  font-size           : 18.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 28.0px;
+}
+.a090920121 {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 276px;
+  height              : auto;
+  width               : 182px;
+  position            : absolute;
+  margin              : 0;
+  left                : 771px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "Apple-Chancery", Helvetica, Arial, serif;
+  font-size           : 18.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 28.0px;
+}
+
+.line4 {
+  background-color    : rgba(215, 215, 215);
+  top                 : 336px;
+  height              : 2px;
+  width               : 1076px;
+  position            : absolute;
+  margin              : 0;
+  left                : 332px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.path {
+  background-color    : rgba(215, 215, 215);
+  top                 : 276px;
+  height              : 2px;
+  width               : 1px;
+  position            : absolute;
+  margin              : 0;
+  left                : 595px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.line5 {
+  background-color    : rgba(215, 215, 215);
+  top                 : 208px;
+  height              : 129px;
+  width               : 1px;
+  position            : absolute;
+  margin              : 0;
+  left                : 551px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.line6 {
+  background-color    : rgba(215, 215, 215);
+  top                 : 208px;
+  height              : 129px;
+  width               : 1px;
+  position            : absolute;
+  margin              : 0;
+  left                : 1066px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+
+.buttontouch1{
+  top: 233px;
+  height: auto;
+  width: 182px;
+  position: absolute;
+  margin: 0;
+  left: 1152px;
+}
+.buttontouch2{
+  top: 281px;
+  height: auto;
+  width: 182px;
+  position: absolute;
+  margin: 0;
+  left: 1152px;
+}

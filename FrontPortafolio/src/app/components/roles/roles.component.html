@@ -1,1 +1,243 @@
-<p>roles works!</p>
+
+<!--
+<div id="wrapper">
+  <div class="flot-container">
+    <div class="main">
+      <div class="container-fluid-table">
+        <div class="card shadow mb-4">
+          <div align="right">
+            <table>
+              <tr>
+                <td>
+                  <h1 class="h3 mb-2 text-gray-800">Roles</h1>
+                </td>
+                <td></td>
+                <td>
+                  <img *ngIf ='idRolUser ==0'
+                    (click)="agregarRole(content)" src="https://img.icons8.com/ultraviolet/40/000000/plus-2-math.png">
+
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table" id="dataTable" width="100%" cellspacing="0">
+                <thead  class='thead-dark'>
+                  <tr>
+                    <th scope='col' >#</th>
+                    <th scope='col'>Nombre</th>
+                    <th class='container'>Descripcion</th>
+                    <th scope='col'>Estado</th>
+                    <th *ngIf='idRolUser==0'></th>
+                    <th *ngIf='idRolUser==0'></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor='let rol of roles ; let i = index '>
+                    <td scope='row'>{{i+1}}</td>
+                    <td>{{rol.nombre}}</td>
+                    <td>{{rol.descripcion}}</td>
+                    <td>{{rol.estado_escrito}}
+                    <td *ngIf='idRolUser==0'><img (click)="modificarRole(modify,rol)" src="https://img.icons8.com/ultraviolet/40/000000/edit.png">   </td>
+                    <td *ngIf='idRolUser==0'><img src="https://img.icons8.com/ultraviolet/40/000000/delete-sign.png" (click)='DeleteRole(rol.id)'></td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+</div>
+    </div>
+</div>
+</div>-->
+
+
+
+  <div class="card shadow mb-4">
+    <div align="right">
+      <table>
+        <tr>
+          <td>
+            <h1 class="h3 mb-2 text-gray-800">Roles</h1>
+          </td>
+          <td></td>
+          <td>
+            <button>
+              <img *ngIf ='idRolUser ==0'
+              (click)="agregarRole(content)" src="https://img.icons8.com/ios-filled/40/000000/add-column.png">
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table" id="dataTable" width="100%" cellspacing="0">
+          <thead  class='thead-light'>
+            <tr>
+              <th scope='col' >#</th>
+              <th scope='col'>Nombre</th>
+              <th class='container'>Descripcion</th>
+              <th scope='col'>Estado</th>
+              <th *ngIf='idRolUser==0'></th>
+              <th *ngIf='idRolUser==0'></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let rol of roles ; let i = index '>
+              <td scope='row'>{{i+1}}</td>
+              <td>{{rol.nombre}}</td>
+              <td>{{rol.descripcion}}</td>
+              <td>{{rol.estado_escrito}}
+              <td *ngIf='idRolUser==0'>
+                <button>
+                  <img (click)="modificarRole(modify,rol)" src="https://img.icons8.com/material-sharp/24/000000/edit-file.png">   
+                </button>
+              </td>
+              <td *ngIf='idRolUser==0'>
+                <button>
+                  <img src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png" (click)='DeleteRole(rol.id)'>
+                </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Agregar Rol</h4>
+    
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="user" (ngSubmit)='addRole(f)'
+        #f = 'ngForm'>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            
+            
+             <mat-form-field>
+               <!--<span *ngIf="f.submitted && f.controls['nombre'].errors" 
+                        class="text-danger animated fadeIn">El nombre es obligatorio</span>
+             <label for="nombre">Nombre</label>
+            <input type="text" 
+                    class="form-control" 
+                    [(ngModel)]='role.nombre'
+                    name="nombre" 
+                    required
+                    placeholder="Nombre">-->
+
+                  <input matInput  
+                    [(ngModel)]='role.nombre'
+                    name="nombre" 
+                    required
+                    placeholder="Nombre">
+            </mat-form-field>
+
+          </div>
+          <div class="form-group col-md-6">
+            
+            
+            <mat-form-field>
+              <!-- <span *ngIf="f.submitted && f.controls['descripcion'].errors" 
+                        class="text-danger animated fadeIn">La descripción es obligatorio <br></span>
+             <label for="nombre">Descripción</label>
+            <input 
+                    [(ngModel)] ='role.descripcion'
+                    type="text" 
+                    class="form-control" 
+                    name="descripcion" 
+                    required
+                    placeholder="Descripción">-->
+
+                  <input matInput  
+                    [(ngModel)] ='role.descripcion'
+                    type="text" 
+                    name="descripcion" 
+                    required
+                    placeholder="Descripción">
+            </mat-form-field>     
+          </div>
+          
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary"  
+              align='center'>Agregar</button>
+          <button type="button"  class="btn btn-outline-secondary"
+            (click)="modal.close('Ok click')">Cancelar</button>
+          
+        </div>
+        
+      </form>
+  </div>
+  
+</ng-template>
+
+
+<ng-template #modify let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Agregar Rol</h4>
+    <svg width="14" height="13">
+            <circle cx="6" cy="6" r="5" stroke="black" stroke-width="1" [attr.fill]="estadoTarjeta" />
+        </svg>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="user" (ngSubmit)='modificarRoleF(f)'
+        #f = 'ngForm'>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <span *ngIf="f.submitted && f.controls['nombre'].errors" 
+                        class="text-danger animated fadeIn">El nombre es obligatorio</span>
+            <label for="nombre">Nombre</label>
+            <input type="text" 
+                    class="form-control" 
+                    [(ngModel)]='role.nombre'
+                    name="nombre" 
+                    required
+                    placeholder="Nombre">
+          </div>
+          <div class="form-group col-md-6">
+            <span *ngIf="f.submitted && f.controls['descripcion'].errors" 
+                        class="text-danger animated fadeIn">La descripción es obligatorio <br></span>
+            <label for="nombre">Descripción</label>
+            <input 
+                    [(ngModel)] ='role.descripcion'
+                    type="text" 
+                    class="form-control" 
+                    name="descripcion" 
+                    required
+                    placeholder="Descripción">
+                            
+          </div>
+          
+        </div>
+
+        <div class="modal-footer">
+          <button  type= 'button' *ngIf='activateUserButton'class="btn btn-outline-secondary"  
+              align='center'
+              (click)="activateRole(role.id)">Activar</button>
+          <button class="btn btn-outline-secondary"  
+              align='center'>Modificar</button>
+          <button type="button"  class="btn btn-outline-secondary"
+            (click)="modal.close('Ok click')">Cancelar</button>
+          
+        </div>
+        
+      </form>
+  </div>
+  
+</ng-template>

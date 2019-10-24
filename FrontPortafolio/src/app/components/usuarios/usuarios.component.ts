@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserModel } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { UnityService } from '../../services/unity.service';
-import { FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { RolesService } from '../../services/roles.service';
 
 
 @Component({
@@ -30,8 +28,10 @@ export class UsuariosComponent implements OnInit {
   estadoTarjeta:string;
   activateUserButton:boolean = false;
 
+  idRolUser = localStorage.getItem('id_rol');
   constructor(
     private auth:UserService,
+    private role:RolesService,
     private unity:UnityService,
     private modalService:NgbModal
   ) { }
@@ -45,6 +45,8 @@ export class UsuariosComponent implements OnInit {
     this.ListAllUser();
     this.ListRoles(localStorage.getItem('e'));
     this.ListUnity(this.empresa);
+    console.log('ROLES');
+    console.log(this.Roles);
   }
   setIdRole(val){
     this.idRole = val;
@@ -135,19 +137,23 @@ export class UsuariosComponent implements OnInit {
         });
   }
   ListRoles(email){
-    this.auth.GetRole(email)
+    this.role.GetRole(email)
         .subscribe( resp=>{
           if (resp['status'] === 200){
-            this.Roles = resp['data'];
+            resp['data'].forEach(element => {
+              if (element.estado){
+                this.Roles.push(element);
+              }  
+            });
           }
         },(err)=>{
-          Swal.fire({
-            allowOutsideClick:false,
-            type:'error',
-            showCloseButton:true,
-            text:err.msg
-          })
-        })
+            Swal.fire({
+              allowOutsideClick:false,
+              type:'error',
+              showCloseButton:true,
+              text:err.msg
+            })
+          });
   }
 
   ListUnity(email){
@@ -257,8 +263,16 @@ export class UsuariosComponent implements OnInit {
               type:'success',
               text:resp['msg']
             });
+      
+            this.users.forEach(element => {
+              
+              if (element['id'] === this.user_id){
+                this.users.pop();
+                resp['data'].estado_escrito = 'Activado';
+                this.users.push(resp['data']);
+              }
+            });
             this.modalService.dismissAll();
-            this.ngOnInit()
           }else{
             Swal.fire({
               allowOutsideClick:false,
@@ -277,6 +291,7 @@ export class UsuariosComponent implements OnInit {
         });
   }
   AddUser(user:UserModel){
+    if(user['forms']['errors']){return;}
     console.log(user);
     Swal.fire({
       allowOutsideClick:false,
