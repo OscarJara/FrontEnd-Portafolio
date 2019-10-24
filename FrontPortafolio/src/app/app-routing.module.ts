@@ -14,6 +14,7 @@ import { ProcesoComponent } from './components/proceso/proceso.component';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { ArbolComponent } from './components/arbol/arbol.component';
 import { MantenedorComponent } from './components/mantenedor/mantenedor.component';
+import { IndicadoresComponent } from './components/indicadores/indicadores.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,9 @@ const routes: Routes = [
   { path: 'procesos'    , component: ProcesosComponent,canActivate: [AuthGuard] },
   { path: 'proceso/:id' , component:ProcesoComponent,canActivate: [AuthGuard]},
   { path: 'usuarios'    , component: UsuariosComponent,canActivate: [AuthGuard] },
+  { path: 'roles'    , component: RolesComponent,canActivate: [AuthGuard] },
+  { path: 'empresas'    , component: EmpresasComponent,canActivate: [AuthGuard] },
+  { path: 'indicadores'    , component: IndicadoresComponent,canActivate: [AuthGuard] },
   { path: '404'    , component: NotfoundComponent,canActivate: [AuthGuard] },
   { path: '**', redirectTo: '404' , canActivate: [AuthGuard]}
 ];
